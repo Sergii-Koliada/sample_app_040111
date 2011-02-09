@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe "LayoutLinks" do
+    
+  # These are tests for the layout links. They test the routing but 
+  # don’t actually check that the links on the layout go to the right pages
       
-    it "should have a Home page at '/'" do
+  it "should have a Home page at '/'" do
     get '/'
     response.should have_selector('title', :content => "Home")
   end
@@ -26,4 +29,20 @@ describe "LayoutLinks" do
     get '/signup'
     response.should have_selector('title', :content => "Sign up")
   end
+  
+  # These tests check that the links on the layout go to the right pages
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    response.should have_selector('title', :content => "About")
+    click_link "Help"
+    response.should have_selector('title', :content => "Help")
+    click_link "Contact"
+    response.should have_selector('title', :content => "Contact")
+    click_link "Home"
+    response.should have_selector('title', :content => "Home")
+    click_link "Sign up now!"
+    response.should have_selector('title', :content => "Sign up")
+  end
+  
 end

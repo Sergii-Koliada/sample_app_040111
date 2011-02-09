@@ -4,7 +4,8 @@ SampleApp040111::Application.routes.draw do
   # Note that we have kept the rule get "users/new", which was generated automatically by the Users
   # controller generation in Listing 5.23. Currently, this rule is necessary to route /users/new correctly,
   # but it doesn’t follow the proper REST conventions (Table 2.2), and we will eliminate it in Section 6.3.3.
-  get "users/new"
+  # get "users/new"
+  resources :users
   
   match '/signup',  :to => 'users#new'
 
